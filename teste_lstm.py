@@ -1,4 +1,5 @@
 # LSTM for international airline passengers problem with time step regression framing
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pandas import read_csv
@@ -8,6 +9,8 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
+
+# Essa linha eu acrescentei no spyder
 
 # convert an array of values into a dataset matrix
 def create_dataset(dataset, look_back=1):
@@ -22,7 +25,8 @@ def create_dataset(dataset, look_back=1):
 tf.random.set_seed(7)
 
 # load the dataset
-dataframe = read_csv('airline-passengers.csv', usecols=[1], engine='python')
+dataframe = pd.read_excel('C:/Users/KG858HY/OneDrive - EY/Desktop/airline-passengers.xlsx')
+dataframe = dataframe.set_index('Month')
 dataset = dataframe.values
 dataset = dataset.astype('float32')
 
